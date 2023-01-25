@@ -1,35 +1,17 @@
 import { Project } from "./Project";
 import styled from "styled-components";
+import { displayGrid, bgcShadow } from "./layout.styled";
 
 const formatDescription = (description: string) =>
   description.substring(0, 60) + "...";
 
 interface ProjectCardProps {
   project: Project;
+  handleEdit: (Project: Project) => void;
 }
 
-const Card = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  border: 2px solid pink;
-  
-  section {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    padding: 0 1rem 1rem;
-  }
-
-  button {
-    align-self: center;
-    margin-right: auto;
-  }
-`;
-
-const ProjectCard = ({ project }: ProjectCardProps) => {
-  const handleEditClick = (projectBeingEdited: Project) =>
-    console.log(projectBeingEdited);
+const ProjectCard = ({ project, handleEdit }: ProjectCardProps) => {
+  const handleEditClick = (projectBeingEdited: Project) => handleEdit(project);
 
   return (
     <Card>
@@ -48,5 +30,20 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
     </Card>
   );
 };
+
+const Card = styled.div`
+  ${displayGrid};
+  ${bgcShadow};
+  
+  section {
+    ${displayGrid}
+    padding: 0 1rem 1rem;
+  }
+
+  button {
+    align-self: center;
+    margin-right: auto;
+  }
+`;
 
 export default ProjectCard;
