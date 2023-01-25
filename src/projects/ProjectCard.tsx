@@ -1,6 +1,6 @@
 import { Project } from "./Project";
 import styled from "styled-components";
-import { displayGrid, bgcShadow } from "./layout.styled";
+import { displayGrid, bgcShadow, DefaultButton } from "./layout.styled";
 
 const formatDescription = (description: string) =>
   description.substring(0, 60) + "...";
@@ -22,10 +22,10 @@ const ProjectCard = ({ project, handleEdit }: ProjectCardProps) => {
         </h3>
         <p className="description">{formatDescription(project.description)}</p>
         <p className="budget">Budget: {project.budget.toLocaleString()}</p>
-        <button className="btn" onClick={() => handleEditClick(project)}>
+        <DefaultButton onClick={() => handleEditClick(project)}>
           <span></span>
           Edit
-        </button>
+        </DefaultButton>
       </section>
     </Card>
   );
@@ -37,7 +37,7 @@ const Card = styled.div`
   
   section {
     ${displayGrid}
-    padding: 0 1rem 1rem;
+    padding: 0 var(--spacer-1r) var(--spacer-1r);
   }
 
   button {

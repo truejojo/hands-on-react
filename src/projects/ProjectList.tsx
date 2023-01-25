@@ -36,7 +36,7 @@ const ProjectsWrapper = styled.div`
   --gap: 2rem;
 
   ${displayGrid}
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
 `;
 
 const ProjectWrapper = styled.div`

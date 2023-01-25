@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { displayGrid, bgcShadow } from "./layout.styled";
 import { Project } from "./Project";
+import { displayGrid, bgcShadow, displayFlex, SaveButton, DangerButton } from "./layout.styled";
 
 interface ProjectFormProps {
   project: Project;
@@ -124,13 +124,12 @@ const ProjectForm = ({
         onChange={handleChange}
       />
 
-      <div className="input-group">
-        <button className="btn">Save</button>
-        <span />
-        <button type="button" className="btn" onClick={handleCancelEditing}>
+      <BtnGroup>
+        <SaveButton>Save</SaveButton>
+        <DangerButton type="button" onClick={handleCancelEditing}>
           cancel
-        </button>
-      </div>
+        </DangerButton>
+      </BtnGroup>
     </Form>
   );
 };
@@ -138,7 +137,12 @@ const ProjectForm = ({
 const Form = styled.form`
   ${displayGrid};
   ${bgcShadow};
-  padding: 1rem;
+  padding: var(--spacer-1r);
+`;
+
+const BtnGroup = styled.div`
+  --gap: .5rem;
+  ${displayFlex};
 `;
 
 export default ProjectForm;
